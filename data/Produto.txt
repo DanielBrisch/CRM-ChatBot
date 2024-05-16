@@ -1,0 +1,46 @@
+INFORMAÇÕES DE CADA CAMPO NA ROTINA DE PRODUTO
+
+Campo “Cliente”
+Valida a configuração “Ver todos os clientes” (Configurações » Perfil » Aba Perfil Configuração Pedido)
+Se “Sim”: lista todos os clientes
+Se “Não”: lista apenas os clientes/endereços do representante logado (PESSOAREPRE)
+Somente permite selecionar um cliente, se este possui tabelas de preço configuradas em Financeiro » Tabela de Preço (Agro3C » Cadastros Gerais » Pessoa » Manutenção)
+
+Campo “Tabela de Preço”
+Se selecionado um cliente, lista apenas as tabelas configuradas para ele.
+Se a tabela possui configuração de indexador:
+Exibe os campos “Cotação Faturamento” e “Valor”
+Exibe valores indexados nos parcelamentos, e consulta de produto
+Exibe apenas tabelas de preços vigentes.
+Se a tabela de preço é por grupo, e selecionar um produto onde o grupo está em duas tabelas filhas, exibe o campo “Tabela de Preço (Item x Preço)”
+Se a tabela possui configuração “Desconto/Acréscimo Gerais” (Agro3C » Notas » Tabela » Tabela de Preços - Item x Preço)
+Valida o tipo da pessoa, e o tipo do cliente (Agro3C » Cadastros Gerais » Pessoa » Manutenção » Aba Principal - Dados pessoais)
+Também prioriza a ordem “Associado ou Terceiro » Todos”, onde somente vai cair na opção Todos após validar associados e terceiros
+Prioriza ainda o tipo do cliente, ou seja, primeiro valida todas as configurações que possui tipo de cliente informado, e somente depois valida os que não possuem essa informação.
+Quando a pessoa e tabela selecionada se enquadrar em alguma regra, o valor do produto será calculado com o Acréscimo ou Desconto configurado
+
+Campo “Cotação Faturamento” e “Valor”
+Ao alterar a data, irá buscar o valor da cotação da moeda configurada na tabela de preço selecionada (Agro3C » Cadastros Gerais » Moedas » Valores diários)
+Os valores serão recalculados conforme o valor da cotação
+Se não houver cotação para a data selecionada, exibe a última cotação da moeda
+
+Campo “Produto”
+Lista os produtos conforme a tabela de preço selecionada
+“Exibir Saldos”
+O saldo exibido é o configurado em “Selecione o saldo a ser apresentado na lista de itens das rotinas de Pedido e Consulta de Produtos.” (Configurações » Perfil » Aba Perfil Configuração Pedido)
+O saldo exibido considera somente o estabelecimento logado.
+“Exibir Preços”
+Se a tabela de preço tem acréscimos, ao alterar o prazo de pagamento será reajustado os valores e exibido a coluna “Vl. Corrigido” (Agro3C » Notas » Tabelas » Tabela de Preços - Item x Preço)
+Se a tabela de preço tem parcelamentos configurados, com acréscimos, ao alterar a forma de parcelamento será reajustado os valores e exibido a coluna “Vl. Corrigido” (Agro3C » Notas » Tabelas » Tabela de Preços - Item x Preço)
+
+Campo “Estabelecimentos” e “Saldos”
+Lista apenas os estabelecimentos configurados para o usuário logado (Configurações » Usuários)
+Os saldos exibidos abaixo do campo são alterados para exibir apenas do estabelecimento selecionado
+Lista apenas os tipos de saldos configurados em “Adicione os saldos de itens que devem listar na rotina de Pedidos e Consulta de Produtos.” (Configurações » Perfil » Aba Perfil Configuração Pedido)
+“Princípio ativo”
+Na tela de consulta de produto, é possível buscar por princípio ativo
+O princípio ativo é cadastrado na tabela AGROTOXICOS e fica vinculado no item através do campo Registro MA
+ex: grupo 14 - adubo | princípio ativo: Abamectina, BIFENTRINA
+“Parcelamentos”
+Se a tabela de preço selecionada tem formas de pagamento e parcelamentos configurada, exibe essas (Agro3C » Notas » Tabelas » Tabela de Preços ou Tabela de Preços - Item x Preço)
+Só exibe o parcelamento se na tabela de preço tem parcelamentos configurados, caso contrário, o card só exibirá a forma de pagamento

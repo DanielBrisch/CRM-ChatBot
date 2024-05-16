@@ -8,7 +8,7 @@ load_dotenv()
 documents = SimpleDirectoryReader('./data').load_data()
 
 TEMPLATE_STR = (
-    "Nós fornecemos informaccoes do contexto abaixo.\n"
+    "Apenas fornecemos informaccoes do contexto abaixo.\n"
     "-------------------------------------------------"
     "{context_str}"
     "\n-------------------------------------------------\n"
@@ -36,8 +36,8 @@ iface = gr.Interface(
     fn=run_code,
     inputs="text",
     outputs="text",
-    title="Chatbot Federal",
-    description="descricao do chatbot",
+    title="Chatbot CRM",
+    description="chatBot para auxiliar no uso do CRM Web",
 )
     
 
