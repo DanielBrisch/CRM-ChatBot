@@ -1,0 +1,779 @@
+INFORMAÇÕES DE CADA CAMPO NA ROTINA DE PEDIDO
+
+Validações Gerais
+Validações
+Na lista de pedidos, a informação de “Pedido” muda conforme situação do pedido (PEDCAB)
+Situação = 2: Pendente
+Situação = 0: Aprovado
+Todos os campos do pedido (exceto configuração e cliente) ficam desabilitados quando configurado “Valida Atualização Cadastral = Sim” (Configuração » Configurações)
+“Esta configuração de pedido não pode ser utilizada por esse usuário”
+Ocorre quando na configuração do pedido (Agro3C » Pedidos » Configuração » Aba 17 - Bloqueio Grupo Usuário), o grupo do usuário logado não está selecionado em “Grupo de Usuários podem usar”
+“A tabela de preço x possui safra diferente da informada no pedido. Para utilizar essa tabela de preço, por favor selecione a safra y.”
+Ocorre quando a configuração do pedido possui “Valida Safra Tab. Preço” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+“O agrotóxico está cancelado para aplicação em UF, conforme restrições do Ministério da Agricultura”
+Ocorre quando o agrotóxico tem Restrição Estadual automática configurada (Reag3C » Cadastros » Restrições de Agrotóxicos » Restrição Estadual automática - AGROTOXICOSITUF)
+Para configurar, verificar qual o Registro MA do item, na tabela AGROTOXICOS verificar qual o ITEM com esse registro MA
+E na tabela AGROTOXICOSITUF configurar a UF que possui restrição
+“Bloquear sem limite” (Configuração » Perfil » Aba Perfil Configuração Pedido)
+Quando configurado “sim”, ao salvar o pedido, se o cliente não tiver limite, irá bloquear a venda
+“Valor Mínimo” configurado no perfil do usuário
+Quando na configuração é definido um valor mínimo, ao salvar o pedido com valor inferior ao mínimo definido, a emissão será bloqueada.
+Valida as configurações (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+“Grupos que podem movimentar”: na tela Consulta de Produto, só irá listar itens que fazem parte dos grupos selecionados
+Se o grupo configurado não é do item configurado, é listado mesmo assim
+“Itens que podem movimentar”: na tela Consulta de Produto, só irá listar os itens selecionados
+Se o item configurado não é do grupo configurado, é listado mesmo assim
+Impressão
+Logo segue a seguinte prioridade:
+Configuração do Pedido (Configuração » Perfil » Aba Perfil Configuração Pedido » Botão Impressão)
+Configuração da Filial (Configuração » Configurações por Filial » Seção Configurações - Gerais)
+Logo da empresa (Configuração » Configurações » Empresa » Logotipo » Banco de Dados)
+Valida as configurações:
+Imprime E-mail da Empresa? (Configuração » Configurações por Filial)
+Imprimir Tabela de Preços (Configuração » Configurações por Filial)	
+Imprimir Configuração de Pedido (Configuração » Configurações por Filial)	
+Mensagem para impressão (Configuração » Configurações por Filial)
+Imagem para impressão (Configuração » Configurações por Filial)
+Imprimir Descontos Pont. (Configuração » Configurações)
+Imprimir Descontos (Configuração » Configurações)
+Imprime Obs. Internas do Pedido? (Configuração » Perfil » Perfil Configuração Pedido)
+Mensagem (Configuração » Perfil » Perfil Configuração Pedido)
+Imagem para impressão (Configuração » Perfil » Perfil Configuração Pedido)
+Conceito 
+Configurações validadas pelo Conceito (Agro3C » Cadastros Gerais » Pessoas » Conceito)
+“Venda Perigosa”: exibe alerta ao selecionar a pessoa no pedido.
+“Validar Documentos por Grupo”
+Aba Validação de Bloqueios
+“Bloquear na Emissão”
+Pedido = Sim: Bloqueia a venda ao selecionar o cliente “Venda Bloqueada para clientes vinculados a este conceito!”
+“Bloquear produtor sem inscrição” - Pedido
+Avisar: No pedido, ao selecionar uma pessoa que é produtor e não possui inscrição informada, irá apenas avisar o usuário.
+Bloquear: No pedido, ao selecionar uma pessoa que é produtor e não possui inscrição informada, irá bloquear a venda.
+Nada: não é validado
+Aba Limite de Crédito
+“Verifica Limite de Crédito”
+Quando configurado, se o cliente não tiver limite, ao salvar a venda irá validar “Venda bloqueada! Cliente sem limite.”
+“Usa Limite do Grupo”
+Quando validar o limite, irá considerar o limite do Grupo CM
+Follow-up/Modal informações da pessoa
+Configurar na pessoa 
+Conceito (Agro3C » Cadastros Gerais » Pessoas » Manutenção » Aba Financeiro » Limite de Crédito)
+Configurar no Conceito (Agro3C » Cadastros Gerais » Pessoas » Conceito Aba » Follow-up)
+Seção Mostrar Follow-up
+“Pedido”:
+Ambos: Exibe Observações e Financeiro
+Financeiro: Exibe apenas o Financeiro da pessoa (Agro3C » Cadastros Gerais » Pessoas » Manutenção » Aba Financeiro » Limite de Crédito » Observações por tipo de limite)
+Observações: Exibe apenas as Observações da pessoa (Agro3C » Cadastros Gerais » Pessoas » Manutenção » Aba Observações » Follow-up)
+Nenhum: Não exibe a tela de informações da pessoa
+Seção Configurar Follow-up
+“Exibe conceito”: Exibe o conceito do cliente abaixo do nome, apenas se configurado = Sim
+“Foto da pessoa”: Exibir imagem da pessoa apenas se configurado = Sim
+“Exibe saldo limite”: Exibe saldos apenas se configurado = Sim
+Validação de Documentos 
+Configurar na pessoa 
+Grupo Pessoas (Agro3C » Cadastros Gerais » Pessoas » Manutenção » Aba Principal » Dados Pessoais)
+Conceito (Agro3C » Cadastros Gerais » Pessoas » Manutenção » Aba Financeiro » Limite de Crédito)
+Configurações aba “Validação de Documentos” 
+Valida as configurações:
+Quando tiver Duplicatas Vencidas - Pedido
+Valida “Número Dias Máximo p/ Entrega”: não lista documentos onde está vencido há menos dias que o máximo configurado.
+Quando tiver Duplicatas em Aberto - Pedido
+Quando tiver Cheques Vencidos - Pedido
+Quando tiver Lançamentos de Conta Movimento Vencidos - Pedido
+Grupo de Tipo CM - TESTAR
+Opções:
+Nada: Não exibe a seção
+Avisa: Apenas Avisa e permite continuar a venda
+Bloqueia: Bloqueia e impede a continuação da venda
+Restringir a prazo: Permite seguir com a venda desde que a forma de pagamento selecionada seja do tipo 1 - Dinheiro
+Valida “As configurações do conceito só permitem venda a vista para este cliente” 
+Validação de Documentos por Grupo
+Mesmas validações de “Validação de Documentos”, porém além da pessoa do pedido, exibe os valores referente às outras pessoas que possuem o mesmo grupo
+Configurar “Validar Documentos do Grupo = Sim” (Agro3C » Cadastros Gerais » Pessoas » Conceito)
+Também é possível configurar quais grupos deve validar (botão disponível ao lado do campo “Validar Documentos do Grupo”)
+Quando selecionar a pessoa no pedido, irá exibir a tela considerando o conceito e o grupo da pessoa
+Aba Geral
+
+Campo “Configuração de Pedido”
+Lista apenas as configurações ativas, que o usuário logado tem liberado para seu perfil (Configurações » Perfil » Aba Perfil Configuração Pedido)
+Valida na configuração do pedido selecionado, o parâmetro “Grupos de Usuários podem Usar” (Agro3C » Pedidos » Configuração » Aba 17 - Bloqueio Grupo Usuário)
+Os grupos selecionados podem utilizar a configuração, caso contrário exibe validação na tela.
+
+Campo “Previsão de Entrega”
+Valida na configuração do pedido selecionado (Agro3C » Pedidos » Configuração » Aba 5 - Controle de Datas)
+“Data de Previsão”
+Quando definido, o campo irá iniciar preenchido no pedido com a data configurada
+“Obriga Data Previsão Entrega”
+Se “Não”: o pedido pode ser salvo sem a data preenchida
+Se “Sim”: é obrigatório o preenchimento do campo para salvar o pedido
+Previsão Inicial e Final da tabela de preço
+Quando no perfil, é configurado uma tabela de preço para a configuração do pedido, e nessa tabela é informado uma Previsão Inicial e Final, ao salvar o pedido sem informar o campo Previsão de entrega, irá validar “Foi definido no perfil de acesso que a tabela tal possui uma data inicial e/ou final de entrega, porém não foi informado nenhuma data no campo Previsão de entrega”
+E quando a previsão de entrega informada estiver fora do intervalo definido irá validar “O campo Previsão de Entrega não está no intervalo de datas definido na tabela de preço. Favor inserir uma previsão válida”
+
+Campo “Cliente”
+Lista os clientes conforme configuração “Ver todos os clientes” (Configurações » Perfil » Aba Perfil Configuração Pedido)
+Se “Sim”: lista todos os clientes
+Se “Não”: lista apenas os clientes do representante logado
+Assinatura
+Assinatura do cliente:
+Valida no perfil “Carregar assinatura de forma automática?”
+Se “Sim”: uma vez preenchida a assinatura, será automaticamente exibida para os próximos pedidos emitidos àquele cliente.
+Se “Não”: a cada vez que for realizada a emissão de um pedido para o cliente, deverá ser preenchido o campo assinatura.
+Assinatura do representante:
+Considera-se representante quando no cadastro da pessoa está marcado a opção “Representante”
+Se o cadastro é apenas Representante, não será criado registro na tabela PPESCLI (pois não é um cliente), somente nas tabelas CONTAMOV e PREPRESE
+Se o representante escolhido é também um cliente, na impressão do pedido exibe o apelido/nome fantasia da pessoa (se houver)
+Se o representante não é cliente, na impressão do pedido exibe o nome/descrição
+
+Campo “Endereço”
+Lista os endereços do cliente selecionado.
+Não lista endereços de cobrança, apenas principal e alternativos
+
+Campo “Hectares”
+Valida na configuração do pedido selecionado, o parâmetro “Obriga informar Hectares” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: ao salvar, vai validar a obrigatoriedade do campo
+Se “Não”: campo não é obrigatório
+
+Campo “Canal de Venda”
+Valida na configuração do pedido selecionado, o parâmetro “Utiliza canal de venda” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: exibe o campo para informar 
+Se “Não”: campo não é exibido no pedido
+
+Campo “Cultura”
+Valida na configuração do pedido selecionado, o parâmetro “Obriga Cultura e Diagnóstico” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+“1 - Itens Defensivos”, “2 - Não defensivos”, ou “3 - Defensivos e Não defensivos”: exibe o campo e valida obrigatoriedade ao salvar
+Considera-se “Defensivo” quando tem “Registro MA” no item
+“4 - Nenhum item”: campo não é exibido
+
+Campo “Tabela de Preço”
+Se o cliente possui tabelas de preço específicas, lista apenas as tabelas configuradas para ele.
+Se a tabela possui configuração de indexador:
+Exibe os campos “Cotação Faturamento”, “Valor”, e “Valor Frete Index”
+Exibe valores indexados nos parcelamentos, produtos, totais, follow-up…
+Exibe apenas tabelas de preços vigentes.
+Valida na configuração do pedido selecionado, o parâmetro “Tabela de Preço padrão”, quando definido, essa será selecionada por padrão (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Tipo de Correção 
+(https://nimitz.atlassian.net/wiki/spaces/DPU/pages/2659877020/Tipos+de+Corre+o+de+Pedido):
+B - Data base: Quando definido que realiza a correção por data base o sistema carrega os acréscimos e descontos definidos na tabela de preço e calcula a diferença de dias entre a data base e a prazo de pagamento, aplicando dessa forma um desconto ou acréscimo no valor do item.
+N - Número de dias: Quando realiza o controle por número de dias é habilitado na tabela de preço filho o campo "Dias para Correção" sendo que possibilita o usuário a definir o número de dias para correção. Após isso o sistema verifica se a tabela de preço possui acréscimo e desconto nas formas de parcelamento, caso não tenha carregará os acrés/desc informado na tabela de preço e calcula a diferença de dias entre o prazo de pagamento e o número de dias da tabela de preço aplicando desta forma um desconto ou acréscimo no unitário do item.
+P - Forma de Parc.: Quando realiza o controle por forma de parcelamento o sistema verifica se na forma de parcelamento da tabela de preço tem valores de acréscimo e descontos informados, caso contrário carrega os valores e adiciona o acréscimo ou desconto conforme o parcelamento.
+Quando parametrizado que a correção é por “P - Forma de Parc.“ é possível adicionar na aba “Forma de Pagamento/Parcelamento“ quais são as possibilidades financeiras a serem utilizadas para a tabela de preço em específico. O sistema permite adicionar diversas formas de parcelamento para uma mesma forma de pagamento, sendo que é possível adicionar os percentuais de acréscimo a serem concedidos dos produtos conforme o parcelamento selecionado.
+Validações:
+“Não é possível incluir o item tal. A data de prazo para pagamento informada é maior que a data de prazo da tabela de preço”
+Ocorre quando a “Tabela de Preço (Item x Preço)” possui uma Data prazo de pagamento, e essa é menor que a data informada no financeiro.
+A validação ocorre ao incluir o item.
+“As tabelas de Item x Preço vinculadas a tabela tal já expiraram! Por gentileza, verifique o cadastro das tabelas Item x Preço.”
+Ocorre quando a “Tabela de Preço (Item x Preço)” possui data inicial e final da vigência, e essa já está vencida
+A validação ocorre ao selecionar a tabela, ou tentar ir para as abas financeiro e produto
+
+Campo “Safra”
+Valida a configuração “Visualizar todas as safras” (Configuração » Configurações):
+Se “Sim”: exibe todas as safras disponíveis
+Se “Não”: exibe apenas as safras válidas
+Safra por Tabela
+Valida a tabela de preço e a configuração do pedido selecionado, o parâmetro “Valida Safra Tab. Preço” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+Se “Sim”, ao salvar o pedido, a safra selecionada deve ser a mesma configurada na tabela de preço utilizada no pedido.
+Safra por Configuração 
+Valida na configuração do pedido selecionado, o parâmetro “Safra”, quando definido, esse será selecionado por padrão (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+
+Campo “Centro de Custo”
+Valida nas configurações “Usa centros de custo?” (FinAgro3C » Configurações » Configuração » Gerais » Aba 12 - Centros de Custo)
+Valida na configuração do pedido selecionado, o parâmetro “Obriga CenCus Cabeçalho” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: exibe o campo e ao salvar, vai validar a obrigatoriedade do campo
+Se “Não”: campo não é exibido
+Lista apenas centros de custos que aceitam lançamentos
+
+Campo “Rota”
+
+Campo é exibido conforme o cliente e representante selecionado no pedido, seguindo a configuração do Agro3C » Pedidos » Rotas x Representante
+Lista somente rotas ativas, que estão vinculadas à pessoa e ao endereço selecionado no pedido
+
+Campo “Representante do Pedido”
+Valida nas Configurações, o parâmetro “Alterar representante	”
+Se “Sim”: campo representante é exibido, e permite alterar
+Se “Não”: campo não é exibido, e é setado o representante do usuário logado
+Valida na configuração do pedido selecionado, o parâmetro “Representante Obrigatório” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: ao salvar, vai validar a obrigatoriedade do campo
+Se “Não”: campo não é obrigatório
+Representante x Endereço
+Configurar na pessoa, quais os representantes dos endereços, havendo mais que um representante por endereço, ao selecionar a pessoa ou trocar de endereço no pedido irá abrir tela solicitando a seleção de um representante (Agro3C » Pessoas » Manutenção » Aba Adicionais » Aba Documentos de Saídas/Entradas)
+
+Campo “Prestador do Pedido”
+Valida na configuração do pedido selecionado, o parâmetro “Obriga Prestador” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: ao salvar, vai validar a obrigatoriedade do campo
+Se “Não”: campo não é obrigatório
+Valida nas Configurações, o parâmetro “Alterar prestador”
+Se “Sim”: campo prestador é exibido, e permite alterar
+Se “Não”: campo não é exibido
+
+Campo “Procurador”
+Valida na configuração do pedido selecionado, o parâmetro “Utiliza Procurador” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: Será exibido o campo procurador
+Se “Não”: campo não é exibido
+Regra de exibição:
+A pessoa deve ter procuradores vinculados ao seu cadastro (Agro3C » Cadastros Gerais » Pessoa » Manutenção » Aba Procurador)
+Lista apenas procuradores ativos
+Se o procurador possuir configuração de data limite, lista apenas se a data atual for maior data limite
+
+Campo “Tipo do Frete”
+Valida na configuração do pedido selecionado, o parâmetro “Padrão Tipo Frete”, Valida as configurações:
+“Usar frete no pedido” (Configurações » Configurações » Pedidos)
+Se “Sim”: exibe os campos de frete no pedido
+“Obriga Frete” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: ao salvar, vai validar a obrigatoriedade do campo (somente se usa frete no pedido)
+Se “Não”: campo não é obrigatório
+“Padrão Tipo Frete” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Quando definido, esse será selecionado por padrão 
+
+Campo “Valor do Frete” 
+Valida as configurações:
+“Usar frete no pedido” (Configurações » Configurações » Pedidos)
+Se “Sim”: exibe os campos de frete no pedido
+“Obriga valor de Frete” (Agro3C » Pedidos » Configuração » Aba 1 - Principal)
+Se “Sim”: ao salvar, vai validar a obrigatoriedade do campo
+Se “Não”: campo não é obrigatório
+“Informar Valor de Frete - Tipo “Pago”” (Configurações » Configurações » Pedidos)
+Se “Sim”: Permite informar valor quando o tipo é Pago
+“Informa Valor Frete - Tipo “A Pagar”” (Configurações » Configurações » Pedidos)
+Se “Sim”: Permite informar valor quando o tipo é A Pagar
+“Valor Frete Mínimo” (Configurações » Configurações » Pedidos)
+Quando definido um valor, o pedido deve ter um frete informado maior ou igual o mínimo definido
+Se o tipo do frete selecionado é “(P) - Pago (CIF)”, é obrigatório informar valor de frete
+
+Campo “Vlr Frete Index” 
+Valida na tabela de preço selecionada, o parâmetro “Utiliza Moeda Indexador”, quando marcado campo é exibido (Agro3C » Notas » Tabelas » Tabela de Preços)
+Ao informar um valor de frete, o valor do frete indexado é calculado, conforme a cotação exibida em tela
+Demais regras segue conforme o campo Valor do Frete
+
+Campo “N° Reserva do Representante”
+Valida as configurações:
+“Conf. a partir Reserva Repres.” (Agro3C » Configurações » Configuração » Agro » Aba Pedidos)
+Selecionar as configurações de pedido que podem informar esse campo
+“Reserva de Itens para Representantes” (Agro3C » Pedidos » Reserva de Itens para Representantes)
+Deve existir configuração de reservas para o representante e safra selecionado no pedido
+Funcionamento
+Selecionar configuração, safra, representante e tabela de preço no pedido
+Safra e representante devem ser os mesmos configurados na reserva
+Na tabela de preço, deve existir um item configurado na reserva para o campo ser exibido
+Na tela de consulta de produto, só irá listar os itens configurados na reserva, que estão na tabela de preço selecionada
+Validação “Nenhum item encontrado para a reserva de representante selecionada” ocorre quando:
+Os itens configurados na reserva não estão configurados em “Itens que podem movimentar” e  “Grupos que podem movimentar” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+Lista apenas reservas ativas
+Essa configuração também impacta nos saldos do item
+
+Campo “N° Pedido Terceiro”
+Valida na pessoa selecionada, o parâmetro “Acompanha Pedido” (Agro3C » Pessoas » Manutenção » Aba Adicionais » Aba Informações Gerais)
+Se “Sim”: ao salvar vai validar a obrigatoriedade do campo
+Se “Não”: campo não é obrigatório
+Outras regras
+Na listagem de pessoas (apenas na tela de pedido), valida a configuração “Visualiza cidade do cliente?” do perfil do usuário
+Se “Sim”: exibe a cidade em todas as opções de filtrar por
+Se “Não”: exibe a cidade somente na opção de filtrar por Cidade, e somente a cidade principal
+Aba Financeiro
+
+Campo “Forma de Pagamento”
+Valida na configuração do pedido selecionado (Agro3C » Pedidos » Configuração » Aba 16 - Formas de Pagamento » Aba Parâmetros Gerais)
+“Obrigar Forma de Pagamento”
+Se “Sim”: Obriga selecionar forma de pagamento para prosseguir com o pedido, e na listagem não exibe a opção “Selecione”
+Se “Não”: Não valida obrigatoriedade de pagamento
+“Utiliza Forma Pagto da Pessoa”
+https://nimitz.atlassian.net/browse/AG-12841
+https://nimitz.atlassian.net/browse/AG-3935 
+Se “N - Não”: essa opção não deve obrigar ou priorizar as formas de pagamento/parcelamento do cadastro da pessoa, e sim listar todas seguindo a prioridade:
+Tabela Item x Preço;
+Tabela de Preço;
+Configuração do Pedido;
+Todas do sistema;
+Se “S - Sim”: essa opção deve obrigar e somente buscar as opções de forma de pagamento/parcelamento que estão definidas no cadastro da pessoa.
+(Agro3C » Cadastros Gerais » Pessoa » Manutenção » Aba Financeiro » Aba Formas Pag./Parc.)
+Se “P - Prioriza”: o sistema deverá primeiramente buscar todas as formas de pagamento/parcelamento das Tabela de Preço (Pai) e Tabela de Preço - Item x Preço (Filha) e somente listar na rotina de Pedidos as formas de pagamento/parcelamento que são iguais às informadas no cadastro da pessoa.
+(Agro3C » Cadastros Gerais » Pessoa » Manutenção » Aba Financeiro » Aba Formas Pag./Parc.)
+Pessoa;
+Tabela Item x Preço;
+Tabela de Preço;
+Configuração do Pedido;
+Todas do sistema;
+“Formas de Pagamento a Aceitar”
+Aceita apenas as formas de pagamento configuradas nesse parâmetro ???
+Lista de pagamentos:
+(Agro3C » Pedidos » Configuração » Aba 16 - Formas de Pagamento » Aba Formas Pag./Parc.)
+Segue a prioridade abaixo:
+-pessoa (se definido na configuração do pedido);
+-tabela filha;
+-tabela pai;
+-conf pedio;
+-todas do sistema;
+
+Campo “Forma de Parcelamento”
+Valida na configuração do pedido selecionado (Agro3C » Pedidos » Configuração » Aba 16 - Formas de Pagamento » Aba Parâmetros Gerais)
+“Utiliza Forma de Parcelamento”
+Se “Sim”: 
+Se “Não”: 
+“Obriga Parcelamento”
+Se “Sim”: Obriga selecionar forma de parcelamento para prosseguir com o pedido, e na listagem não exibe a opção “Selecione”
+Se “Não”: Não valida obrigatoriedade de parcelamento
+“Formas de Parcelamento a Aceitar”
+Aceita apenas as formas de parcelamento configuradas nesse parâmetro ???
+Lista de parcelamentos:
+(Agro3C » Pedidos » Configuração » Aba 16 - Formas de Pagamento » Aba Formas Pag./Parc.)
+
+Campo “Data Prazo para Pagamento”
+Valida na configuração do pedido selecionado (Agro3C » Pedidos » Configuração » Aba 5 - Controle de Datas)
+“Data prazo pagamento”
+Quando definido irá marcar no pedido a data configurada por padrão
+Essa data também muda conforme pagamento e parcelamento selecionado
+Botão “Editar Financeiro”
+Botão é exibido quando a tabela de preço não for “Controla Correção Por = Parcelamento” ou se a configuração do pedido “Utiliza Forma de Parcelamento = Não”
+
+Campo “Data de Validade”
+Valida na configuração do pedido (Agro3C » Pedidos » Configuração » Aba 5 - Controle de Datas)
+“Altera Dt. Val. igual Dt. Pag”
+Se “Sim”: conforme a data prazo para pagamento é alterada, automaticamente a data de validade também é alterada, ou seja, o default será o mesmo que o definido em data prazo para pagamento. Também obriga que a data de validade seja menor ou igual à data de prazo de pagamento.
+Se “Não”: marca como default o definido na configuração “Data de Validade”.
+“Dias máximo de Validade”
+Quando definido um valor, não será possível alterar a data de validade para uma data maior que os dias definidos.
+Funcionamento:
+Se a configuração do pedido usa a data de validade igual ao prazo de pagamento, então a data setada é a mesma do prazo de pagamento, senão, usa a data de validade máxima da configuração do pedido
+
+Campo “Descontos - Tabela de Preço”
+Para exibir o campo configurar os tipos de desconto em Agro3C » Pedidos » Configuração » Aba 14 - Descontos
+Apenas campo informativo, não realiza nenhum cálculo (PEDCABDESCONTO)
+
+Campo “Descontos - Pontualidade na venda”
+Valida as configurações:
+Se o item é de promoção, não mostra seção de pontualidade no item
+“Utiliza Controle de Desconto = Sim” (Agro3C » Configurações » Agro » Aba Pedido)
+“Pontualidade na Venda” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+0 - Não: 
+No item, exibe campo valor unitário e desconto - porém não controla pontualidade
+Valida “Permite Alterar Valor Unitário?” do usuário
+1 - Pontualidade: 
+No item, não exibe campo valor unitário e desconto
+Configurar 
+2 - Pontualidade e Comercial: 
+No item, exibe campos de valor unitário e desconto
+Valida “Permite Alterar Valor Unitário?” do usuário
+“Contr. Rateio p/ Rentabilidade” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+Se “1 - Sim”: 
+Exibe a seção “Descontos - Pontualidade na Venda %” na aba financeiro do pedido.
+Ao informar um percentual de desconto de pontualidade, este será rateado entre os itens do pedido.
+O relatório do pedido mostra o campo “Pontualidade Comercial” iniciado como “R$ 0,00”. 
+Se “2 - Não”: 
+Exibe a seção “Desconto por Pontualidade” nos itens do pedido.
+Ao informar um percentual de desconto de pontualidade será válido apenas para o item.
+O relatório do pedido mostra o campo “Pontualidade Comercial” iniciado como “0.00%”. 
+“Visualiza % desconto pontualidade do item?” (Configurações » Perfil » Aba Perfil Configuração Pedido)
+Quando a pontualidade é informada no financeiro 
+(PONTUALIDADEVENDA = 1 ou 2, CONTRATEIORENTAB = 1):
+Visualiza % desconto pontualidade do item? = Não:
+No card e no item não exibe os campos de pontualidade
+Visualiza % desconto pontualidade do item? = Sim:
+No card e no item exibe os campos de pontualidade (desabilitado)
+Se o item é de promoção, não mostra seção de pontualidade no item
+Quando a pontualidade é informada no item 
+(PONTUALIDADEVENDA = 1 ou 2, CONTRATEIORENTAB = 2):
+Visualiza % desconto pontualidade do item? = Sim ou Não:
+No card e no item exibe os campos de pontualidade (habilitado)
+Se o item é de promoção, não mostra seção de pontualidade no item
+“Desconto Pontualidade”: 
+Seleciona qual configuração será aplicada para calcular o desconto (Configurações » Configurações » Pedidos)
+Esse é configurado em FinAgro » Pessoas » Cadastros Gerais » Descontos/Acréscimos
+Também definir no cadastro da configuração do pedido (IDDESCONTO)
+“Imprimir Descontos Pont.”: (Configurações » Configurações » Pedidos)
+Se “Sim”: o valor do desconto é impresso no pedido
+Quando esta funcionalidade está habilitada na emissão de pedido se o usuário informar um desconto maior do que o permitido o sistema manterá o valor original do produto, porém o "desconto pontualidade" é mostrado em duas colunas separadas("%Descto Pont." e "Valor Descto"). Esse desconto será validado no acerto da duplicata a receber.
+Desconto Pontualidade: Configura uma opção para todos, ou configura o valor do desconto por tipo de pessoa (Associado, ou Terceiro), clicando no ícone da lista ao lado do campo.
+https://nimitz.atlassian.net/browse/AG-21276 
+https://nimitz.atlassian.net/browse/AG-205 
+https://nimitz.atlassian.net/browse/AG-8808 
+Verificar se ao emitir um pedido no CRM para uma pessoa do tipo Terceiro, quando somente esteja parametrizado descontos para pessoas do tipo “Associado” só serão gravados os descontos gerais parametrizados no FinAgro » Configurações » Configuração » Gerais aba 8-Cálculo de Juros, que estejam relacionados a esse tipo de pessoa, nesse exemplo (Todos ou Terceiro). Caso não haja nenhum desconto enquadrado neste perfil, o desconto não será gravado na tabela PEDCABDESCTITULO. Verificar se o Agro segue o mesmo comportamento.
+
+Campo “Limite de Crédito”
+Para exibir o campo, depende da pessoa selecionada no pedido, essa precisa estar configurada:
+Configurar tipos de limites para a pessoa (Agro3C » Pessoa » Manutenção » Aba Financeiro » Aba Limite de Crédito)
+Verificar o “Conceito” configurado na pessoa 
+Na configuração do conceito, marcar “Verificar limite de Crédito = Sim” (Agro3C » Conceito » Aba Limite)
+VERIFLIMCREDITOEM da tabela CONFAGROE deve ser diferente de 4
+Configurar “Tipo de Limite Controlado” (Agro3C » Configurações » Agro » Aba Pedidos)
+Por tipo: Lista os tipos configurados na pessoa
+Geral: Exibe apenas o limite geral 
+Ambos: Mostra os limites por tipos e o geral
+Validação “Não é possível salvar um pedido sem o tipo de limite” ocorre quando “Tipo de Limite Controlado = Por tipo” (CONFAGROE), e a pessoa não tem tipos de limites cadastrados.
+Valida a configuração “Núm. Dias Considera Venda como à Vista” (Agro3C » Conceito » Aba Limite)
+Ao salvar o pedido onde a forma de pagamento é “5 - Dup. Receber”, só valida autorização/bloqueio de limite se o total de dias é menor que o prazo de pagamento configurado
+Total: data atual + dias configurados
+Se prazo de pagamento < total: não cai em autorização/bloqueio de limite
+Autorização de limite de crédito
+Para exibir o campo “Mensagem” é necessário que VERIFLIMCREDITOEM da CONFAGROE c esteja configurado com diferente de 2
+Tabela de Limite x Item (Limite por Cultura)
+Valida as configurações:
+Cadastrar uma “Tabela de Item x Limite” (Agro3C » Estoque » Item » Tabela Item x Limite)
+Definir os produtos que fazem parte dessa tabela
+No tipo de limite de crédito (Agro3c » Cadastros Gerais » Pessoas » Tipos de Limites de Crédito)
+“Controla Itens por Limite” = Sim 
+Vincular a tabela de item x limite, caso contrário, no pedido irá validar “Não há mais itens para adicionar com o limite de crédito selecionado”
+Na pessoa (Agro3C » Cadastros Gerais » Pessoa » Manutenção)
+Definir o Conceito da pessoa
+Vincular os tipos de limite (Aba Financeiro » Limite de Crédito » Tipos de Limite - tabela PESSOALIMCRED)
+Na configuração do pedido (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+“Controla Itens por Limite” = Sim 
+Incluir pedido para a configuração que controla itens por limite, ao adicionar itens irá listar apenas os itens configurados na “Tabela Item x Limite”
+Quando a configuração possui esse controle, o campo limite de crédito ficará desabilitado para seleção
+Deve estar validando limite conforme descrito no primeiro tópico
+Ao salvar o item irá abrir uma tela para selecionar os limites disponíveis para o item/pessoa
+
+Campo “Observação”
+Valida a configuração “Código Mensagem Padrão” (Agro3C » Pedidos » Configuração » Aba 9 - Mensagem)
+Quando informado, o pedido irá trazer o campo Observação preenchido automaticamente.
+
+Campo “Mensagem de Transbordo”
+
+Campo “Observações Internas”
+Valida no perfil do usuário “Imprime Obs. Internas do Pedido?”
+Se “Sim”: ao realizar a impressão do pedido, será exibida as informações descritas no campo observações internas
+Se “Não”: ao realizar a impressão do pedido, não exibe as informações descritas no campo observações internas
+Aba Produtos
+Se a tabela de preço é por grupo, e selecionar um produto onde o grupo está em duas tabelas filhas, exibe o campo “Tabela de Preço (Item x Preço)”
+Valida a configuração “Permite Itens Duplicados?” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+Se “Aceita”: ao adicionar o item mais de uma vez, não exibe nenhum aviso informando ao usuário da duplicidade
+Se “Somente avisa”: ao adicionar o item mais de uma vez, exibe aviso ao usuário informando da duplicidade
+Se “Bloqueia”: o item após adicionado uma vez, não é listado para ser adicionado novamente
+Se “G - Agrupa”: não validado pelo CRM
+
+Campo “Embalagem”
+Valida as configurações:
+“Preço por Embalagem” (Agro3C » Estoque » Item » Manutenção » Aba Embalagem)
+Lista as embalagens configuradas, assim quando alterar a quantidade será aplicado o multiplicado configurado, bem como o valor do item quando usado a embalagem
+“Emb. Padrão”
+“Sim”: vem marcada por padrão no item
+“C - Conv. na Digitação”: https://nimitz.atlassian.net/browse/AG-16489 - não tratado no flutter
+
+Campo “Valor unitário”
+
+Campo não é exibido quando
+Na configuração do pedido, marcar “Pontualidade na Venda = Pontualidade” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+Para o campo ficar habilitado para alterar deve ter as seguintes configurações:
+O item não pode ser de promoção/não pode destacar promoção
+Na configuração do pedido (Agro3C » Pedidos » Configuração), marcar:
+Utiliza Produção de Sementes = Não (Aba 8 - Produção de Sementes)
+Pontualidade na Venda = Não (Aba 2 - Itens)
+Na configuração do Agro (Agro3C » Configurações » Configuração » Agro), marcar:
+Utiliza Controle de Desconto = Não (Aba Pedidos)
+Na configuração do Usuário do CRM, seção de Pedido, marcar:
+Permite Alterar Valor Unitário?
+Se “Não”: Campo fica desabilitado
+Se “Sim”: Campo fica habilitado e permite a edição do valor unitário
+Se “Prioriza do Pedido”: prioriza a seleção do campo “Permite Alterar Preço Unit” da configuração do pedido que está sendo utilizada
+Se o item é de promoção, campos ficam desabilitados
+Se a tabela possui configuração “Desconto/Acréscimo Gerais” (Agro3C » Notas » Tabela » Tabela de Preços - Item x Preço)
+Valida o tipo da pessoa, e o tipo do cliente (Agro3C » Cadastros Gerais » Pessoa » Manutenção » Aba Principal - Dados pessoais)
+Também valida a ordem em que foi cadastrada as opções
+Quando a pessoa e tabela selecionada se enquadrar em alguma regra, o valor do produto será calculado com o Acréscimo ou Desconto configurado
+
+Campo “Valor Unit. Index”
+Mesmas regras do campo “Valor unitário”, porém a tabela deve usar indexador.
+desabilita quando:
+usa semente = sim
+promoção = sim
+altera preço item = não (no usuário)
+usa pontualidade = sim
+controla desconto  = sim
+
+Campo “Vlr. Unit. Indexador”
+Valida as configurações
+“Utiliza Controle de Desconto = Não” (Agro3C » Configurações » Agro » Aba Pedido)
+“Pontualidade na Venda = Não” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+O item não pode ser de promoção
+Tabela de preço deve possuir indexador 
+
+Campo “Desconto (Máx xxx%)”
+Valida na configuração do perfil “Visualizar desconto máximo do item”
+Ordem de prioridade de “Desconto máximo”
+Tabela de preço (Agro3C » Notas » Tabelas » Tabela de Preço - Item x Preço » Aba Descontos)
+% Comercial: Valor informado aqui será exibido em máximo
+Tabelas de Descontos: será somado os valores informados nos descontos selecionados, e exibido em máximo
+“Desconto por Quantidade”: Valida regra de “Desconto por Quantidade”
+Item: Usa o desconto quando configurado “Desc. Máximo” (Agro3C » Estoque » Item » Manutenção » Aba Geral)
+Grupo: Usa o desconto quando configurado “% Desconto Máximo” (Agro3C » Estoque » Item » Grupo » Aba 3 - Estoques/Vendas)
+Configuração Agro: Usa o desconto quando configurado “% Desconto Máximo” (Agro3C » Configurações » Agro » Aba Geral)
+Valida configuração do usuário “Permite informar Desconto Maior que o permitido?”
+Se “Sim”: ao informar um desconto maior que o máximo configurado, irá exibir uma validação informando o usuário que o desconto ultrapassou e pedindo se quer utilizar o desconto máximo ou continuar mesmo assim.
+Se “Não”: ao informar um desconto maior que o máximo configurado, irá exibir uma validação informando o usuário que o desconto ultrapassou e que o valor será reajustado para o máximo permitido.
+Autorização de desconto:
+Quando configurado um desconto máximo, e ao selecionar o item é informado um desconto superior ao máximo, ao salvar o pedido é apresentado uma validação avisando que o pedido ficará pendente de autorização, e também um campo de texto para informar uma mensagem para aprovação
+(conf 2, pessoa 154, tabela 120, item 179 com tabela filha 198, colocar 20% desconto)
+Botão “Descontos por Quantidade”
+Para exibir o botão, valida se na tabela de preço selecionada no pedido, tem configurado “Desc. Quantidade” (Agro3C » Notas » Tabelas » Tabela de Preços - Item x Preço » Aba Item x Preço)
+No pedido, selecionar um item que possui essa configuração
+Desconto por quantidade por Valor:
+Ao alterar a quantidade, no campo valor unitário é alterado com o valor permitido para aquela quantidade, não há validação ao alterar o valor.
+Desconto por quantidade por Percentual:
+Ao alterar a quantidade, no campo % desconto será exibido o percentual máximo permitido para aquela quantidade
+
+Campo “Cód. do Item de Terc.”
+Valida na pessoa selecionada, o parâmetro “Acompanha Pedido” (Agro3C » Pessoas » Manutenção » Aba Adicionais » Aba Informações Gerais)
+Se “Sim”: ao salvar vai validar a obrigatoriedade do campo
+Se “Não”: campo não é obrigatório
+Cálculo preço do item quando tabela por preço base
+Se o prazo do pagamento é maior que a data base: Acréscimo
+Acréscimos por dia: % de acréscimo ÷ 30
+Dias entre a data base e o prazo de pagamento: Data base da tabela - Data prazo pagamento
+% Total de Acréscimos: Acréscimos por dia x dia entre as datas
+Preço do produto: Preço definido na tabela +% Total de acréscimos
+Ex:
+Acréscimos por dia: 10% ÷ 30 = 0,33
+Dias entre a data base e o prazo de pagamento: 08/08/2023 -10/12/2023 = 124
+% Total de Acréscimos: 0,33 x 124 =41,33%
+Preço do produto: 300,00 +41,33% = 424,00
+Se o prazo do pagamento é menor que a data base: Desconto
+
+Campos “Shelf Mínimo (%)” e “Shelf Máximo (%)”
+Valida as configurações: (Agro3C » Pedido » Manutenção » Aba 2- Itens)
+“Controlar Shelf Life” 
+Se “Sim”: exibe os campos no pedido
+“Shelf Life Máximo (%)” e “Shelf Life Mínimo (%)”
+Ao definir um valor, esses são exibidos no pedido como padrão
+“Permite edição Shelf Life?”
+Se “Sim”: permite editar o valor de shelf life
+“Prioriza Shelf Life”
+Se “Config. Pedido”: será utilizado os valores de “Shelf Life Máximo (%)” e “Shelf Life Mínimo (%)” configurados no pedido.
+Se “Cad. Pessoa”: será utilizado os valores de “Shelf Life Máximo (%)” e “Shelf Life Mínimo (%)” configurados na pessoa, se houver (Agro3C » Cadastros Gerais » Pessoa » Manutenção » Aba Adicionais » Aba Shelf Life)
+Ao salvar o pedido, irá validar o percentual mínimo e máximo informado, seguindo a prioridade descrita acima.
+
+Campo “Centro de Custo”
+Valida na configuração do pedido selecionado, o parâmetro “Obriga CenCus Item” (Agro3C » Pedidos » Configuração » Aba 2 - Itens)
+Se “Sim”: exibe o campo e ao salvar, vai validar a obrigatoriedade do campo
+Se “Não”: campo não é exibido
+Lista apenas centros de custos que aceitam lançamentos
+Casas decimais
+Para exibir as casas decimais nos campos, segue as seguintes configurações do pedido o (Agro3C » Pedido » Manutenção » Aba 10 - Casas Decimais):
+Totalizadores:
+“Valor Unit”: CASASDECVLRUNI
+“Valor Total”: CASASDECTOT
+“Vlr. Frete Unit.”: fixo com 2 casas decimais
+“Vlr. Unit com Frete”: CASASDECVLRUNI
+“Unit. Index.”: CASASDECVLRUNIINDEX
+“Total Index.”: CASASDECTOTINDEX
+“Vlr. Frete Index Unit”: fixo com 2 casas decimais
+“Vlr. Unit. com Frete Index.”: CASASDECVLRUNI
+“Valor da Embalagem”: CASASDECVLRUNI
+
+Campos:
+“Valor unitário com desconto”: CASASDECVLRUNI
+“Valor Unit. Index”: CASASDECVLRUNI
+“Desconto”: fixo com 9 casas decimais
+“Quantidade”: pega da tabela UNIDADE, conforme a unidade cadastrada no item selecionado
+“% Margem Mínima”: fixo com 9 casas decimais
+“% Margem Praticada”: fixo com 9 casas decimais
+“Desc. Pont. (%)”: fixo com 9 casas decimais
+“Vlr. Un c/ Desc”: CASASDECVLRUNI
+“Valor Germoplasma”: CASASDECVLRUNI
+“Desc. Unit.”: fixo com 9 casas decimais
+“Comissão %”: DECPERCOMIS
+Tratamento de Sementes, e Royalties
+“Valor”: fixo com 4 casas decimais
+“% Acréscimo”: fixo com 2 casas decimais
+“% Decréscimo”: fixo com 2 casas decimais
+Comissão TSI
+“% Comissão TSI”: DECPERCOMISTSI
+“Total Comissão TSI”: DECVLRTOTCOMISTSI
+“Vlr. Unit Comissão TSI”: DECPERCOMISTSI
+Comissão Germoplasma
+“Vlr Unit Comis Germo”: fixo com 4 casas decimais
+“Vlr Total Comis Germo”: fixo com 4 casas decimais
+Total Comissão
+“Vlr Total Comissões”: DECVLRTOTCOMISSOES
+“% Comissão”: DECPERCOMIS
+% Comissão
+Configurar “Controla Comissão no Pedido = Sim” (Configurações » Perfil » Aba Perfil Configuração Pedido)
+No Item:
+Marcar “Tipo Lote <> Semente” (Agro3C » Estoque » Item » Manutenção » Aba Geral)
+Margem de Rentabilidade
+Valida as configurações abaixo para mostrar campos “% Margem Mínima”, e “% Margem Praticada” no item, e também para mostrar a tela “Rentabilidade”:
+“Controla Margem de Lucro” deve estar marcado (Agro3c » Notas » Tabelas » Tabela de Preço » Aba Controle de Rentabilidade) 
+“Lista % Mínimo de Margem” ou “Lista % Margem Praticado” deve ser “Sim” (Agro3c » Notas » Tabelas » Tabela de Preço » Aba Controle de Rentabilidade) 
+“Forma Margem” - “Por Item” deve estar marcado (Agro3c » Notas » Tabelas » Tabela de Preço » Aba Controle de Rentabilidade) 
+“Visualiza Margem Mínima” (Usuário)
+Esse tem prioridade sobre a configuração “Lista % Mínimo de Margem” 
+Visualiza Margem Praticada = Sim (Usuário)
+Esse tem prioridade sobre a configuração “Lista % Margem Praticado” 
+Há 5 tipos de margens de rentabilidade, para escolher quais serão utilizadas é necessário configurar na Tabela de preço (Agro3C » Nota » Tabelas » Tabela de Preço » Aba Controle de Rentabilidade)
+Por Pedido: 
+Define na Tabela de Preço, na aba Controle de Rentabilidade, informar a margem na seção Formação de Margem Mínima por Pedido (Agro3C » Nota » Tabelas » Tabela de Preço)
+Por Representante: 
+Na pessoa (essa deve ser representante), na aba Representante informar a margem na seção “% Rentabilidade Pedido” (Agro3C » Cadastros Gerais » Pessoa » Manutenção)
+Por Item:
+Define na Tabela de Preço - Item x Preço, na aba Principal, informar a margem na coluna “% Margem Mínima” (Agro3C » Nota » Tabelas » Tabela de Preço - Item x Preço)
+Por Grupo do Item e Marca do Item
+Define na Tabela de Preço - Item x Preço, na aba Controle de Rentabilidade, informar a margem na seção “Limites de Margem Mínima” (Agro3C » Nota » Tabelas » Tabela de Preço - Item x Preço)
+Se o cálculo da margem do item adicionado no pedido for superior ao percentual de margem mínima configurada, será exibido “Margem de Rentabilidade” em azul.
+Caso não tenha atingido o percentual mínimo definido, essa mensagem será exibida “Margem Mínima Excedida” em vermelho.
+Ao abrir a tela, irá destacar qual tipo de margem não atingiu o mínimo configurado.
+Aprovação por Etapas:
+Através do conceito da pessoa, é possível configurar para a margem mínima cair em aprovação quando não for atingida, basta marcar a opção “Margem Mínima” na aba “Aprovação por Etapas” (Agro3C » Cadastros Gerais » Pessoa » Conceito)
+É possível configurar para bloquear a venda quando a margem não atingiu o percentual mínimo, através do parâmetro “Bloquear ao exceder a margem mínima?” (Configurações » Perfis » Perfil Configuração Pedido)
+O bloqueio ocorrerá mesmo que esteja configurado para cair em aprovação por etapas
+Cálculo da margem mínima:
+Margem Mínima: (1-(Custo total tipo de rentabilidade ÷ Valor total tipo de rentabilidade)) x 100
+Custo/Valor total: depende do tipo de rentabilidade, se for por grupo, soma o valor de todos os itens que fazem parte do grupo configurado.
+O custo utilizado é o que está definido na tabela de preço, e se não houver, utiliza o custo definido diretamente no item.
+PEDCAB
+JUSTIFICATIVA e DTAPROVACAO (Essa coluna sempre grava a data atual que o pedido está sendo sincronizado)
+Configurar para utilizar aprovação direta e na configuração do pedido definir que o status do pedido é aprovado
+ou
+Configurar aprovação por etapas, definir status do pedido como aprovado e necessita de autorização = “Sim” na configuração do pedido
+Margem de Participação
+Margem de Rentabilidade
+Valida as configurações abaixo para mostrar campos “% Margem Mínima”, e “% Margem Praticada” no item, e também para mostrar a tela “Rentabilidade”:
+“Controla Participação Mínima” deve estar marcado (Agro3c » Notas » Tabelas » Tabela de Preço » Aba Controle de Participação) 
+“Lista % Mínimo de Participação” ou “Lista % Participação Praticada” deve ser “Sim” (Agro3c » Notas » Tabelas » Tabela de Preço » Aba Controle de Participação) - valida?
+“Limites de Participação Mínima” deve estar marcado configurado por grupo, marca, tabela ou item
+….
+Comissão Germoplasma e Total Comissão
+Testes: 
+Pedido 1, cliente 154, tabela 195, safra 51, item 179 ou 278
+Pedido 1, cliente 154, tabela 120, safra 50, item 278
+Configurar “Controla Comissão no Pedido = Sim” (Configurações » Perfil » Aba Perfil Configuração Pedido)
+No Item:
+Marcar “Tipo Lote = Semente” (Agro3C » Estoque » Item » Manutenção » Aba Geral)
+
+Campos mobile - Alfa: somente exibe a seção de tratamento se:
+Configuração do pedido precisa usar configuração de semente (USAPRODSEMENTE = S, tabela PEDIDOCONFIGURACAO), para teste, usar a 2
+no perfil, deve controlar comissao = sim (CTRLCOMISSPEDIDO = S, tabela PERFILACESSOTELA)
+Funcionamento:
+Quando altera o “Vlr Unit Comis Germo” da seção comissão Germoplasma, vai mudar o total comissão
+Tratamento de Sementes e Comissão TSI
+Para exibir os campos, selecionar “Usa produção de semente? = Sim” na configuração do pedido (Agro3C » Pedido » Manutenção » Aba 8 - Produção de Semente)
+Configurar uma tabela de preço para Sementes (Agro3C » Notas » Tabelas » Tabela de Preços - Tratamento)
+Selecionar Safra, Cultura, Tratamentos, e Embalagens que terão controle de sementes
+No Item:
+Marcar “Tipo Lote = Semente” (Agro3C » Estoque » Item » Manutenção » Aba Geral)
+Selecionar a mesma “Embalagem” que o configurado na Tabela de Preço - Tratamento, no campo “Emb. Sementes” e na tabela Preço por Embalagem (Agro3C » Estoque » Item » Manutenção » Aba Embalagem)
+Selecionar a mesma Cultura que o configurado na Tabela de Preço - Tratamento (Agro3C » Estoque » Item » Manutenção » Aba REAG)
+Na Tabela de Preço - Item x Preço:
+Selecionar “Tabela se Sementes = Sim”
+Selecionar uma tabela na aba Tratamento de Sementes
+Na aba Item x Preço:
+Adicionar um item que possui a mesma embalagem da tabela de tratamento, e que é semente
+Na coluna Ativo marcar “Sim”
+Para exibir os campos referentes a tratamento de Sementes no item, é validado:
+A Safra selecionada no pedido deve ser a mesma configurada na Tabela de Preço - Tratamento
+A Tabela de preço selecionada no pedido deve ter uma configuração de Tratamento
+O item selecionado deve ter as configurações de Embalagem igual ao configurado na tabela de Tratamento
+Funcionamento:
+Ao marcar “Usa Trat. Sem. = Não”, a seção toda some.
+Conforme altera o “Tratamento” muda o “Valor” 
+Quando altera o “Valor” da seção de tratamento de sementes, vai mudar o total comissão, o valor unitário com desconto, e o valor unitário index
+Regra para habilitar (Agro3C » Notas » Tabelas » Tabela de Preços - Tratamento)
+% Comissão TSI: habilita quando “Tipo Comissão = 1 - Porcentagem”
+Vl.Unit. Comissão: habilita quando “Tipo Comissão = 2 - Valor”
+
+Campos mobile - Alfa: somente exibe a seção de tratamento se:
+VALORTRATAMENTO (tabela TABPRECOTSIDET) <> NULL
+LOTECTRL (tabela ITEM) = S - para teste, usar item 179
+EMBALAGEM (tabela TABPRECOTSIDET) - para teste, usar embalagem = 33 
+SAFRA (tabela TABPRECOTSICAB) - para teste, usar safra 22
+CULTURA (tabela TABPRECOTSICAB) tem que ser a mesma IDCULTURA (tabela ITEM)
+Valores que vem do banco:
+
+Campo Valor: VALORTRATAMENTO (tabela TABPRECOTSIDET)
+
+Campo Data base: DTBASE (tabela TABPRECOTSIDET)
+
+Campo Acréscimo e Decréscimo: PCACRESCIMO e PCDESCONTO (tabela TABPRECOTSIDET)
+
+Campo % Comissão TSI: PCCOMISSAO (tabela TABPRECOTSIDET)
+
+Campo Excedente TSI e Redução TSI: PCEXCEDENTECOMISS e PCREDUCAOCOMISS (tabela TABPRECOTSIDET)
+Royalties
+Testes: Pedido 1, cliente 154, tabela 195, safra 51, item 179 ou 278
+Configurar uma tabela de preço para Royalties (Agro3C » Notas » Tabelas » Tabela de Preço - Royalties)
+Selecionar Safra, Cultivar, UF’s e embalagens que terão royalties.
+No Item (Agro3C » Estoque » Produto » Manutenção):
+Marcar “Tipo Lote = Semente” (Agro3C » Estoque » Item » Manutenção » Aba Geral)
+Selecionar o mesmo “Cultivar” que o configurado na Tabela de Preço - Royalties (Agro3C » Estoque » Item » Manutenção » Aba Produção de Sementes)
+Selecionar a mesma “Embalagem” que o configurado na Tabela de Preço - Royalties, no campo “Emb. Sementes” e na tabela Preço por Embalagem (Agro3C » Estoque » Item » Manutenção » Aba Embalagem)
+Na Tabela de Preço - Item x Preço:
+Selecionar uma tabela na aba Royalties
+Na aba Item x Preço, adicionar um item que possui a mesma embalagem da tabela de Royalties
+Para exibir os campos referentes a Royalties no item, é validado:
+O endereço da pessoa selecionada no pedido deve ser da mesma UF configurada na Tabela de Preço - Royalties
+A Safra selecionada no pedido deve ser a mesma configurada na Tabela de Preço - Royalties
+A Tabela de preço selecionada no pedido deve ter uma configuração de Royalties
+O item selecionado deve ter as configurações de Cultivar e Embalagem igual ao configurado na tabela de Royalties
+
+Campos mobile - Alfa: somente exibe a seção de royalties se:
+CULTIVAR (tabela TABPRECOROYDET) tem que ser a mesma CULTIVAR (tabela ITEM)
+EMBALAGEM (tabela TABPRECOROYDET) - para teste, usar embalagem = 33 
+VALORVENDA (tabela TABPRECOROYDET) <> NULL
+LOTECTRL (tabela ITEM) = S - para teste, usar item 179
+SAFRA (tabela TABPRECOROYCAB) - para teste, usar safra 22
+UF (tabela TABPRECOROYDET) - para teste, usar a pessoa 154, endereço 0 - GO
+Valores que vem do banco:
+
+Campo Valor: VALORVENDA (tabela TABPRECOROYDET)
+
+Campo Data base: DTBASE (tabela TABPRECOROYDET)
+
+Campo Acréscimo e Decréscimo: PCACRESCIMO e PCDESCONTO (tabela TABPRECOROYDET)
+Aba Saldos
+Validações do perfil do usuário
+Seção “Saldos”
+Configurações de quais saldos serão exibidos no produto
+Seção “Estoque”
+Seleciona Estoque
+Se “Sim”:
+Lista os saldos detalhados por local de estocagem, conforme os que foram selecionados para ficar visível.
+O campo “Local de estoque” é exibido na tela de item, apenas se essa configuração estiver = Sim
+Se “Não”:
+Lista apenas os totais dos saldos configurados para ser exibido em tela
+Considera nos totais do “Saldo Global”, apenas os estabelecimentos selecionados na configuração do pedido
+Validação de saldo negativo (Agro3C » Pedido » Manutenção » Aba 2 - Itens):
+“Saldo que não permite Negativo”
+O saldo selecionado aqui é o que será validado no pedido
+Quando configurado estabelecimentos (PEDCFGSALDONEG):
+Será somado o saldo de todos os estabelecimentos selecionados para exibir no saldo.
+Regra válida para exibição de saldos na tela consulta de produto
+“Estabelecimentos”
+Define quais estabelecimentos serão considerados no “Saldo Global” exibido no item
+É somado os saldos de todos os estabelecimentos selecionados, se nenhum foi selecionado, a seção saldo global não é exibida
+“Controla Autorização de Saldo?”
+Se “Sim”: Quando o item selecionado está com saldo negativo no local de estocagem informado, mostra validação para solicitar liberação do pedido
+Se “Não”: Quando o item selecionado está com saldo negativo no local de estocagem informado, não permite incluir o item
+Saldos de Representantes
+Quando configurado “Conf. a partir Reserva Repres”, na aba “Saldos” do item irá exibir a seção “Totais da Reserva do Representante” (Agro3C » Configurações » Configuração » Agro » Aba Pedidos)
+Itens em Promoção
+Validações no perfil do usuário “Destacar Itens em Promoção”
+Se “Sim”: Ao adicionar itens, se algum produto tiver promoção na tabela de preço pai, irá exibir uma tela com os itens da promoção
+Se “Não”: Não exibe promoções
+Valida na Tabela de Preço - Item x Preço (Notas » Tabelas » Tabela de Preço - Item x Preço)
+No item marcar “Promoção = Sim”, informar valor de promoção (normal e indexador) e validade da promoção
+Controle de Cota
+Definir na configuração do pedido, “Atualiza Cota do Item” (Agro3c » Pedidos » Configuração » Aba 2 - Itens)
+Se “Sim”: ao adicionar o item, e informar uma quantidade maior que a cota disponível, ao salvar o item será validado e será alterada a quantidade automaticamente para o máximo disponível.
+Se “Não”: Não valida cotas
+Cadastrar uma cota (Agro3c » Pedidos » Controle de Cota)
+Informar uma data inicial e final de vigência desta cota, se o controle será realizado por Data de Emissão do Pedido ou pela Data de Previsão de Entrega.
+Controla cota por:
+Grupo de Item: Quando selecionada esta opção é definido que a cota para o representante será por quantidade do Grupo do item.
+Item: Quando selecionada esta opção é definido que a cota para o representante será por quantidade do item em específico.
+Controla cota para: 
+Representante: Quando selecionada esta opção, deve ser validado primeiramente o campo Saldo (Grid Representante), então verificar se os itens adicionados nos pedidos compõem o controle de cotas (Grid Item/Grupo com Controle de Cota).
+Item/Grupo x Representante: Quando selecionada esta opção, deve ser validado a opção Controla Cota Por(Item ou Grupo), e então validar o campo Saldo localizado no GRID Item/Grupo com Controle de Cota se o mesmo não excede a cota para o representante.
+Na grid, informar o representante, itens/grupos e a quantidade da cota.
+Valida apenas cotas válidas e ativas
+Para testes: usar configuração 1, tabela 192, item 5 (representante 1) ou 216 (representante 5)
+Itens de Kit
+Valida as configurações
+No item (Agro3C » Estoque » Item » Manutenção)
+“É Kit?” = Sim 
+Definir itens que compõem o kit (Aba Composição - tabela ITEMCOMPOS)
+Na “Tabela de Preço - Item x Preço”: 
+Incluir na tabela os itens do kit e os que itens compõem o kit
+Caso contrário irá validar “Os itens (X) não podem ser adicionados, pois não constam na tabela de preço”.
+Na configuração do Pedido
+“Iniciar Preços para Kit?” = Sim
+No pedido, ao selecionar um item que é Kit, irá solicitar a quantidade, e ao confirmar irá incluir todos os itens que compõem aquele kit com a quantidade informada, fazendo a conversão de embalagem se houver.
+Depois que o item kit é adicionado, não permite incluir novamente o mesmo item kit, ele não é mais listado na consulta de produto
+Ao exclui um item da composição, os demais são excluídos
+

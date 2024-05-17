@@ -1,0 +1,118 @@
+INFORMAÇÕES DE CADA CAMPO NA ROTINA DE PESSOA 
+
+Campo “CPF/CNPJ” 
+Valida a configuração (Agro3C » Configurações » Configuração » Gerais » aba 9 – CPF/CNPJ/Insc. Estad.)
+“CNPJ Duplicado” e “CPF Duplicado”
+0 – Nada
+Não valida outros clientes com o mesmo CPF/CNPJ, permite salvar o cliente com o CPF/CNPJ Duplicado
+1 – Valida
+Exibe validação informando que há outro cliente com o mesmo CPF/CNPJ, mostra opções de cancelar e continuar, ao clicar em continuar, permite salvar o cliente com o CPF/CNPJ Duplicado
+2 – Bloqueia
+Exibe validação informando que há outro cliente com o mesmo CPF/CNPJ, e não permite prosseguir com o cadastro
+Não valida quando é “Leads” ou “Porspects”, apenas quando é “Cliente”
+Validar Dados Endereço Alternativo Duplicado
+Sim: valida “CNPJ Duplicado” e “CPF Duplicado” também nos endereços alternativos das outras pessoas
+
+Campo “Inscrição do Produtor” 
+Permite preencher apenas quando “Produtor Rural = Sim”
+Valida a configuração (Agro3C » Configurações » Configuração » Gerais » aba 9 – CPF/CNPJ/Insc. Estad.)
+Permitir Inscrição do Produtor duplicada
+0 – Nada
+Não valida outros clientes com a mesma Inscrição do Produtor, permite salvar o cliente com o Inscrição do Produtor
+1 – Valida
+Exibe validação informando que há outro cliente com o mesmo Inscrição do Produtor, mostra opções de cancelar e continuar, ao clicar em continuar, permite salvar o cliente com o Inscrição do Produtor Duplicado.
+2 – Bloqueia
+Exibe validação informando que há outro cliente com o mesmo Inscrição do Produtor, e não permite prosseguir com o cadastro
+Não valida quando é “Leads” ou “Porspects”, apenas quando é “Cliente”
+Validar Dados Endereço Alternativo Duplicado
+Sim: valida “Permitir Inscrição do Produtor duplicada” também nos endereços alternativos das outras pessoas
+
+Campo “Data Nascimento/Fundação” 
+Valida no conceito da pessoa o campo “Dt. Nascimento Obrigatória” (Agro3C » Cadastros Gerais » Pessoas » Conceito)
+
+Campo “Código SUFRAMA” e “Data de Validade”
+Se a cidade selecionada possui configuração “Incentivo Suframa = Sim”, será exibido os campos (Cadastros Gerais » Pessoa » Cidade)
+Valida no endereço principal e endereços alternativos
+
+Campo “Latitude” e “Longitude”
+Valida as configurações: 
+“Obriga Latitude e Longitude” (Configurações » Configurações)
+“Se Sim”: Obrigatório informar latitude e longitude
+“Permitir alterar latitude e longitude cadastradas” (Configurações » Usuário » Configurações - Pessoa)
+Se “Sim”: os campos ficam habilitados para informar manualmente 
+Valida no endereço principal e endereços alternativos.
+
+Campo “Contribuinte Isento”
+Quando habilitado, não permite informar Inscrição estadual
+
+Campo “Produtor Rural”
+Quando habilitado esse campo:
+Exibe campo “Inscrição de Produtor”
+Habilita a opção “Obriga NFP-e”
+Valida inscrição de produtor duplicada, na tela principal e endereços alternativos
+Talhões - Campo “Safra”
+Valida a configuração “Visualizar todas as safras”:
+Se “Sim”: exibe todas as safras disponíveis
+Se “Não”: exibe apenas as safras válidas
+Atividades Econômicas - Produtor Rural (Pred. Agrícola)
+Valores mudam conforme safra, nível, cultura e endereço selecionados, para isso configurar:
+Em Custo Cultura/Safra/Tecnologia, configurar quais cidades terão valores diferentes (Agro3C » Estoque » Custo)
+Então, conforme selecionado a safra, nível, cultura e endereço será carregado um valor.
+Se não houver um endereço selecionado na tela de Produtor Rural (Pred. Agrícola), é utilizado o endereço principal da pessoa.
+Se houver algum selecionado, usa-se esse para buscar os valores.
+Patrimônios - Campo “Matrícula”
+Lista as matrículas cadastradas em FinAgro » Pessoas » Pessoas » Matrículas
+Filhos
+A opção é exibida somente para pessoas físicas
+Validações:
+Lista apenas pessoas físicas ativas para selecionar
+Um filho não pode estar vinculado a mais de uma mãe/pai
+Mãe, pai e cônjuge não podem ser vinculados como filho
+Cônjuges
+A opção é exibida somente para pessoas físicas
+Validações:
+Permite apenas um cônjuge, esse pode ser uma pessoa já cadastrada, ou uma pessoa sem cadastro
+Lista apenas pessoas físicas ativas para selecionar
+Um cônjuge não pode estar vinculado a mais de uma pessoa
+Mãe, pai e filho não podem ser vinculados como cônjuge
+Endereços alternativos 
+Valida a configuração “Validar Raiz do CNPJ/CPF” (Agro3C » Configurações » Configuração » Gerais » aba 9 – CPF/CNPJ/Insc. Estad.)
+0 – Nada
+Não valida que o CPF/CNPJ possui raiz diferente do cadastro da pessoa
+1 – Valida
+Exibe validação informando que CPF/CNPJ possui raiz diferente do cadastro da pessoa, mostra opções de cancelar e continuar, ao clicar em continuar, permite salvar o cliente com o CPF/CNPJ de raiz diferente
+2 – Bloqueia
+Exibe validação informando que CPF/CNPJ possui raiz diferente do cadastro da pessoa, e não permite prosseguir com o cadastro
+OBS: essa configuração não tem vínculo com “Validar Dados Endereço Alternativo Duplicado”
+Outras regras
+Ao cadastrar uma pessoa e sincronizar, será automaticamente cadastrado o endereço de cobrança dela, com as mesmas informações do endereço principal
+Quando dois usuários alteram o mesmo registro simultaneamente (criando patrimônios, talhões…), apenas o que sincronizar primeiro que será salvo
+Exceto os cadastros de Anexos, Atividades econômicas e Filhos, esses ambos serão salvos ao sincronizar
+Tabelas utilizadas na pessoa:
+Pessoa: CONTAMOV, e PPESCLI
+Imagem: CONTAMOVANEXO
+Patrimônios: 
+Próprio - CONTAMOVIMOV
+Semovante - CONTAMOVSEMO
+Móvel - CONTAMOVMOV
+Ônus patrimônios: CONTAMOVIMOVONUS
+Talhões: ENDERECOCULT
+Anexos: CONTAMOVANEXO
+Endereços: ENDERECO
+Financeiro: CONTAMOVREF e CONTAMOVBCODEP
+Atividades econômicas: CONTAMOVATIVECON
+Filhos: CONTAMOVFILH
+Cônjuge: PPESCLI
+Quando troca o tipo da pessoa: ALTERREGTIPOPESSOA
+Salva a cidade da pessoa quando ela é produtor rural: CONSULENTE
+Salva os dados de quem é o pai e mãe: CONTAMOVFAMI
+Salva o representante que criou a pessoa: PESSOAREPRE
+Salva o conceito da pessoa: CONCEITOPESSOA
+Opção “Pedido” na listagem 
+Valida a configuração “Ver todos os clientes” (Configurações » Perfis » Aba Perfil Configuração Pedido)
+Se “Sim”: botão pedido é exibido para todos os clientes
+Se “Não”: botão pedido é exibido apenas para os clientes da carteira do representante
+Também verifica:
+Se o usuário tem acesso ao módulo pedido (perfil e liberação)
+Se a pessoa está sincronizada (possui um id no banco gerencial)
+
